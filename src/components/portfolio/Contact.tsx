@@ -15,7 +15,7 @@ export function Contact() {
         <div className="lg:col-span-2 space-y-4">
           {[
             { icon: Mail, label: "Email", value: "ojhakaruna296@gmail.com" },
-            { icon: Phone, label: "Phone", value: "+977 98XXXXXXXX" },
+            { icon: Phone, label: "Phone", value: "+977 9763202739" },
             { icon: MapPin, label: "Location", value: "Pokhara, Nepal" },
           ].map((c) => (
             <div key={c.label} className="glass shadow-soft flex items-center gap-4 rounded-2xl p-5">
