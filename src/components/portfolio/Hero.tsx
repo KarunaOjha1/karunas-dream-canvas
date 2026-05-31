@@ -111,7 +111,7 @@ export function Hero() {
 
           <div className="tilt glass relative overflow-hidden rounded-[2rem] shadow-glow">
             <img
-              src={heroImg}
+              src="https://i.postimg.cc/c1bTxW83/Whats-App-Image-2026-05-31-at-9-20-46-PM.jpg"
               alt="Karuna Ojha"
               width={1024}
               height={1024}
