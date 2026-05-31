@@ -109,7 +109,7 @@ export function Hero() {
           <div className="bg-accent-gradient absolute -right-4 -top-4 h-32 w-32 rounded-3xl opacity-80 blur-[2px] [transform:rotate(12deg)]" />
           <div className="bg-primary-gradient absolute -bottom-6 -left-6 h-40 w-40 rounded-3xl opacity-70 [transform:rotate(-8deg)]" />
 
-          <div className="tilt glass relative overflow-hidden rounded-[2rem] shadow-glow">
+          <div className="tilt glass relative aspect-square overflow-hidden rounded-2xl shadow-glow">
             <img
               src="https://i.postimg.cc/c1bTxW83/Whats-App-Image-2026-05-31-at-9-20-46-PM.jpg"
               alt="Karuna Ojha"
