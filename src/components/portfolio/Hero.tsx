@@ -1,5 +1,4 @@
 import { ArrowRight, BrainCircuit, Code2, Database, Download, Sparkles } from "lucide-react";
-import heroImg from "@/assets/karuna-hero.jpg";
 
 const stack = [
   "Python", "Machine Learning", "Java", "Data Science", "MySQL",
