@@ -29,15 +29,28 @@ export function Contact() {
             </div>
           ))}
           <div className="flex gap-3 pt-2">
-            {[Github, Linkedin, Mail].map((Icon, i) => (
-              <a
-                key={i}
-                href="#"
-                className="glass shadow-soft flex h-12 w-12 items-center justify-center rounded-xl text-foreground transition-transform hover:scale-110 hover:text-primary"
-              >
-                <Icon className="h-5 w-5" />
-              </a>
-            ))}
+            <a
+              href="https://github.com/KarunaOjha1"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="glass shadow-soft flex h-12 w-12 items-center justify-center rounded-xl text-foreground transition-transform hover:scale-110 hover:text-primary"
+            >
+              <Github className="h-5 w-5" />
+            </a>
+            <a
+              href="https://www.linkedin.com/in/karunaojha"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="glass shadow-soft flex h-12 w-12 items-center justify-center rounded-xl text-foreground transition-transform hover:scale-110 hover:text-primary"
+            >
+              <Linkedin className="h-5 w-5" />
+            </a>
+            <a
+              href="mailto:ojhakaruna296@gmail.com"
+              className="glass shadow-soft flex h-12 w-12 items-center justify-center rounded-xl text-foreground transition-transform hover:scale-110 hover:text-primary"
+            >
+              <Mail className="h-5 w-5" />
+            </a>
           </div>
         </div>
 
