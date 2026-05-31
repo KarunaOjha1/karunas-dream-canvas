@@ -14,7 +14,7 @@ export function Contact() {
       <div className="grid gap-8 lg:grid-cols-5">
         <div className="lg:col-span-2 space-y-4">
           {[
-            { icon: Mail, label: "Email", value: "karuna.ojha@example.com" },
+            { icon: Mail, label: "Email", value: "ojhakaruna296@gmail.com" },
             { icon: Phone, label: "Phone", value: "+977 98XXXXXXXX" },
             { icon: MapPin, label: "Location", value: "Pokhara, Nepal" },
           ].map((c) => (
