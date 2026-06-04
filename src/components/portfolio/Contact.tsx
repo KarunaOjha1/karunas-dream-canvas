@@ -22,7 +22,7 @@ export function Contact() {
           {[
             { icon: Mail, label: "Email", value: "ojhakaruna296@gmail.com" },
             { icon: Phone, label: "Phone", value: "+977 9763202739" },
-            { icon: MapPin, label: "Location", value: "Pokhara, Nepal" },
+            { icon: MapPin, label: "Location", value: "Kathmandu, Nepal" },
           ].map((c) => (
             <div key={c.label} className="glass shadow-soft flex items-center gap-4 rounded-2xl p-5">
               <div className="bg-primary-gradient flex h-11 w-11 items-center justify-center rounded-xl text-primary-foreground">
