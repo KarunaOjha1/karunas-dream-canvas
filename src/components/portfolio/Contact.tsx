@@ -1,9 +1,15 @@
 import { Github, Linkedin, Mail, MapPin, Phone, Send } from "lucide-react";
-import { useState } from "react";
+import { useRef, useState } from "react";
+import emailjs from "@emailjs/browser";
 import { Section } from "./Section";
 
+const EMAILJS_SERVICE_ID = "service_2uth8ih";
+const EMAILJS_TEMPLATE_ID = "template_dl0dy3s";
+const EMAILJS_PUBLIC_KEY = "oDZm56yguAa8tXa-9";
+
 export function Contact() {
-  const [sent, setSent] = useState(false);
+  const [status, setStatus] = useState<"idle" | "sending" | "sent" | "error">("idle");
+  const formRef = useRef<HTMLFormElement>(null);
   return (
     <Section
       id="contact"
