@@ -1,9 +1,15 @@
 import { Github, Linkedin, Mail, MapPin, Phone, Send } from "lucide-react";
-import { useState } from "react";
+import { useRef, useState } from "react";
+import emailjs from "@emailjs/browser";
 import { Section } from "./Section";
 
+const EMAILJS_SERVICE_ID = "service_2uth8ih";
+const EMAILJS_TEMPLATE_ID = "template_dl0dy3s";
+const EMAILJS_PUBLIC_KEY = "oDZm56yguAa8tXa-9";
+
 export function Contact() {
-  const [sent, setSent] = useState(false);
+  const [status, setStatus] = useState<"idle" | "sending" | "sent" | "error">("idle");
+  const formRef = useRef<HTMLFormElement>(null);
   return (
     <Section
       id="contact"
@@ -55,41 +61,65 @@ export function Contact() {
         </div>
 
         <form
-          onSubmit={(e) => {
+          ref={formRef}
+          onSubmit={async (e) => {
             e.preventDefault();
-            setSent(true);
-            setTimeout(() => setSent(false), 3000);
+            if (!formRef.current) return;
+            setStatus("sending");
+            try {
+              await emailjs.sendForm(
+                EMAILJS_SERVICE_ID,
+                EMAILJS_TEMPLATE_ID,
+                formRef.current,
+                { publicKey: EMAILJS_PUBLIC_KEY },
+              );
+              setStatus("sent");
+              formRef.current.reset();
+              setTimeout(() => setStatus("idle"), 4000);
+            } catch (err) {
+              console.error("EmailJS error:", err);
+              setStatus("error");
+              setTimeout(() => setStatus("idle"), 4000);
+            }
           }}
           className="glass shadow-soft space-y-4 rounded-3xl p-8 lg:col-span-3"
         >
           <div className="grid gap-4 sm:grid-cols-2">
             <input
               required
+              name="from_name"
               placeholder="Your name"
               className="w-full rounded-xl border border-border bg-background/60 px-4 py-3 text-sm outline-none transition focus:border-primary focus:ring-2 focus:ring-primary/20"
             />
             <input
               required
               type="email"
+              name="reply_to"
               placeholder="Your email"
               className="w-full rounded-xl border border-border bg-background/60 px-4 py-3 text-sm outline-none transition focus:border-primary focus:ring-2 focus:ring-primary/20"
             />
           </div>
           <input
+            name="subject"
             placeholder="Subject"
             className="w-full rounded-xl border border-border bg-background/60 px-4 py-3 text-sm outline-none transition focus:border-primary focus:ring-2 focus:ring-primary/20"
           />
           <textarea
             required
+            name="message"
             rows={5}
             placeholder="Your message..."
             className="w-full resize-none rounded-xl border border-border bg-background/60 px-4 py-3 text-sm outline-none transition focus:border-primary focus:ring-2 focus:ring-primary/20"
           />
           <button
             type="submit"
-            className="bg-primary-gradient shadow-soft inline-flex w-full items-center justify-center gap-2 rounded-xl px-6 py-3.5 text-sm font-semibold text-primary-foreground transition-transform hover:scale-[1.02]"
+            disabled={status === "sending"}
+            className="bg-primary-gradient shadow-soft inline-flex w-full items-center justify-center gap-2 rounded-xl px-6 py-3.5 text-sm font-semibold text-primary-foreground transition-transform hover:scale-[1.02] disabled:opacity-70"
           >
-            {sent ? "Message sent — thank you!" : (<>Send Message <Send className="h-4 w-4" /></>)}
+            {status === "sending" && "Sending..."}
+            {status === "sent" && "Message sent — thank you!"}
+            {status === "error" && "Something went wrong — try again"}
+            {status === "idle" && (<>Send Message <Send className="h-4 w-4" /></>)}
           </button>
         </form>
       </div>
